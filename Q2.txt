@@ -1,0 +1,165 @@
+Activity
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Parent linear layout with vertical orientation -->
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+   
+  <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="Email:" android:padding="5dip"/>
+             
+  <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"/>            
+   
+  <Button android:id="@+id/button" android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="Login"/>
+   
+  
+     
+</LinearLayout>
+
+
+
+package com.example.androidlayouts;
+import android.app.Activity;
+import android.os.Bundle;
+ 
+public class AndroidLayoutsActivity extends Activity {
+   private Button button;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.linear_layout);
+
+   button= (Button) findViewbyId(R.id.button);
+   button.setOnClickListener(new View.OnClickListener()
+{
+   @Override
+   public void onClick(View v)
+{
+   Login();
+    }
+});
+}
+ public void Login()
+{
+Intent intent=new Intent(this,Activity2.class);
+startActivity(intent);
+}
+}
+
+
+
+
+Activity2
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+ 
+    <TextView android:id="@+id/label" android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:text="Course" />
+ 
+    <EditText android:id="@+id/inputCourse" android:layout_width="fill_parent"
+              android:layout_height="wrap_content" android:layout_below="@id/label" />
+   
+    <Button android:id="@+id/button" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_below="@id/inputEmail"
+            android:layout_alignParentLeft="true" android:layout_marginRight="10px"
+            android:text="Next" />
+ 
+    
+</RelativeLayout>
+
+
+package com.example.androidlayouts;
+import android.app.Activity;
+import android.os.Bundle;
+ 
+public class Activity2 extends Activity {
+   private Button button;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.relative_layout);
+     button= (Button) findViewbyId(R.id.button);
+   button.setOnClickListener(new View.OnClickListener()
+{
+   @Override
+   public void onClick(View v)
+{
+   Next();
+    }
+});
+}
+ public void Next()
+{
+Intent intent=new Intent(this,Activity3.class);
+startActivity(intent);
+}
+}
+
+
+
+
+
+Activity3
+<FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="https://schemas.android.com/apk/res/android">
+    <ImageView
+        android:src="@android:drawable/alert_dark_frame"
+        android:scaleType="fitCenter"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"/>
+     <Button
+        android:id="@+id/button"
+        android:text="Back To First Page"
+        android:layout_x="10px"
+        android:layout_y="5px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Welcome To The Classroom"
+        android:textSize="24sp"
+        android:textColor="#ffff"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:gravity="center"/>
+</FrameLayout>
+
+
+
+
+package com.example.androidlayouts;
+import android.app.Activity;
+import android.os.Bundle;
+ 
+public class Activity3 extends Activity {
+   private Button button;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.frame_layout);
+     button= (Button) findViewbyId(R.id.button);
+   button.setOnClickListener(new View.OnClickListener()
+{
+   @Override
+   public void onClick(View v)
+{
+   BackToFirstPage();
+    }
+});
+}
+ public void BackToFirstPage()
+{
+Intent intent=new Intent(this,Activity1.class);
+startActivity(intent);
+}
+}
+
+
+
